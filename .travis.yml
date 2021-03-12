@@ -1,0 +1,19 @@
+---
+sudo: false
+dist: trusty
+
+language: ruby
+
+cache: bundler
+
+notifications:
+  email: false
+
+rvm:
+  - 2.7.2
+
+before_install:
+  - gem install bundler
+
+script:
+  - bundle exec rspec --format progress
