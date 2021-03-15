@@ -5,7 +5,7 @@ module Superfaktura
     end
 
     def self.download(id, locale: :en)
-      get("/#{Superfaktura::Locales.iso2_to_iso3(locale)}/invoices/pdf/#{id}")
+      file("/#{Superfaktura::Locales.iso2_to_iso3(locale)}/invoices/pdf/#{id}")
     end
   end
 end

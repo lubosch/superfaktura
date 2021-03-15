@@ -12,6 +12,15 @@ module Superfaktura
       end
     end
 
+    def self.file_client
+      Faraday.new(url: SUPERFAKTURA_URL) do |builder|
+        builder.request :url_encoded
+        builder.request :json
+
+        builder.adapter Faraday.default_adapter
+      end
+    end
+
     def self.request(uri, method = 'POST', payload = nil)
       response = client.public_send(method.downcase.to_sym) do |request|
         request.headers['Authorization'] = "SFAPI email=#{Superfaktura.config.email}&apikey=#{Superfaktura.config.token}"
@@ -30,6 +39,15 @@ module Superfaktura
 
     def self.get(path, payload = nil)
       request(path, 'GET', payload)
+    end
+
+    def self.file(uri)
+      response = file_client.get(uri) do |request|
+        request.headers['Authorization'] = "SFAPI email=#{Superfaktura.config.email}&apikey=#{Superfaktura.config.token}"
+      end
+      raise Superfaktura::Error, response.body['error_message'] unless response.status == 200
+
+      response.body
     end
   end
 end

@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'tempfile'
 
 RSpec.describe Superfaktura::Invoices do
   describe '.create' do
@@ -22,8 +23,8 @@ RSpec.describe Superfaktura::Invoices do
       stub_request(:get, 'https://moja.superfaktura.sk/slo/invoices/pdf/23jk3n2')
         .with(
           headers: { 'Authorization' => 'SFAPI email=email@superfaktura.sk&apikey=k324m3k' }
-        ).and_return(body: '{ "error": 0, "success": true }')
-      expect(subject['success']).to be_truthy
+        ).and_return(body: 'test text')
+      expect(subject).to eq 'test text'
     end
   end
 end

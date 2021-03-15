@@ -31,4 +31,15 @@ RSpec.describe Superfaktura::BaseApi do
       end
     end
   end
+
+  describe '.file' do
+    subject { described_class.file('/file') }
+    it 'sends request to superfaktura' do
+      stub_request(:get, 'https://moja.superfaktura.sk/file')
+        .with(
+          headers: { 'Authorization' => 'SFAPI email=email@superfaktura.sk&apikey=k324m3k' }
+        ).and_return(body: 'test text')
+      expect(subject).to eq 'test text'
+    end
+  end
 end
