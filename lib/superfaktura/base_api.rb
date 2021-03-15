@@ -17,7 +17,7 @@ module Superfaktura
         request.headers['Authorization'] = "SFAPI email=#{Superfaktura.config.email}&apikey=#{Superfaktura.config.token}"
 
         request.url(uri)
-        request.body = "data=#{payload.to_json}"
+        request.body = "data=#{payload.to_json}" if payload
       end
       raise Superfaktura::Error, response.body['error_message'] unless response.body['error'].zero?
 
@@ -28,7 +28,7 @@ module Superfaktura
       request(path, 'POST', payload)
     end
 
-    def self.get(path, payload)
+    def self.get(path, payload = nil)
       request(path, 'GET', payload)
     end
   end

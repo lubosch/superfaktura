@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe Superfaktura::BaseApi do
   describe '.request' do
-    subject { described_class.request('/url', 'POST', { id: 34131 }) }
+    subject { described_class.request('/url', 'POST', { id: 34_131 }) }
     it 'sends request to superfaktura' do
       stub_request(:post, 'https://moja.superfaktura.sk/url')
         .with(

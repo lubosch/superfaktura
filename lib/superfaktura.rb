@@ -4,8 +4,9 @@ require 'faraday_middleware'
 
 require 'superfaktura/version'
 require 'superfaktura/configuration'
+require 'superfaktura/locales'
 require 'superfaktura/base_api'
-require 'superfaktura/create_invoice'
+require 'superfaktura/invoices'
 require 'superfaktura/check_connection'
 
 module Superfaktura
