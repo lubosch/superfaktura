@@ -37,9 +37,21 @@ Initialize `exponea.rb` with this settings:
 
 ### Create invoice
 ```
-Superfaktura::CreateInvoice.call(attributes)
+Superfaktura::Invoices.create(attributes)
 ```
 - **attributes**: hash for adding invoice. More info here: https://github.com/superfaktura/docs/blob/master/invoice.md#add-invoice
+
+### Download invoice
+```
+Superfaktura::Invoices.download(id, locale: :en)
+```
+- **id**: superfaktura id
+- **locale**: locale, iso2. More info in Superfaktura::Locales::LANGUAGES
+
+### Check connection
+```
+Superfaktura::CheckConnection.call : Boolean
+```
 
 ## Development
 
