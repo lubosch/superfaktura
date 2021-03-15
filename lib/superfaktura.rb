@@ -6,6 +6,7 @@ require 'superfaktura/version'
 require 'superfaktura/configuration'
 require 'superfaktura/base_api'
 require 'superfaktura/create_invoice'
+require 'superfaktura/check_connection'
 
 module Superfaktura
   @configuration = Configuration.new

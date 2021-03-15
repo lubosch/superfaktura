@@ -18,9 +18,26 @@ Or install it yourself as:
 
     $ gem install superfaktura
 
+## Configuration
+
+```
+Superfaktura.configure do |config|
+  config.email = Rails.application.config_for(:superfaktura)[:email]
+  config.token = Rails.application.config_for(:superfaktura)[:token]
+end
+```
+
+Initialize `exponea.rb` with this settings:
+- **email**: login email to superfaktura
+- **token**: token generated from superfaktura
+
 ## Usage
 
-
+### Create invoice
+```
+Superfaktura::CreateInvoice.call(attributes)
+```
+- **attributes**: hash for adding invoice. More info here: https://github.com/superfaktura/docs/blob/master/invoice.md#add-invoice
 
 ## Development
 

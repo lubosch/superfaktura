@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    superfaktura (0.9.0)
+    superfaktura (0.9.1)
       faraday (~> 1)
       faraday_middleware (~> 1)
 

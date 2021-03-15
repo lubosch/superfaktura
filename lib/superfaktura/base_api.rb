@@ -27,5 +27,9 @@ module Superfaktura
     def self.post(path, payload)
       request(path, 'POST', payload)
     end
+
+    def self.get(path, payload)
+      request(path, 'GET', payload)
+    end
   end
 end
