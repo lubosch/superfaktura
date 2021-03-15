@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/lubosch/superfaktura.svg?branch=master)](https://travis-ci.com/lubosch/superfaktura)
+[![Coverage Status](https://codecov.io/gh/lubosch/superfaktura/branch/master/graph/badge.svg)](https://codecov.io/gh/lubosch/superfaktura)
 # Superfaktura
 
 Gem for easy integration with http://superfaktura.sk/

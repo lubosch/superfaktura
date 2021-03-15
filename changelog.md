@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.4
+Update readme
+
 ## 0.9.3
 Rework invoice download
 
