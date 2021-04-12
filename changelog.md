@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.6
+Add sandbox
+
 ## 0.9.5
 Update readme
 

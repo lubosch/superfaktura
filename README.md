@@ -24,8 +24,10 @@ Or install it yourself as:
 
 ```
 Superfaktura.configure do |config|
-  config.email = Rails.application.config_for(:superfaktura)[:email]
-  config.token = Rails.application.config_for(:superfaktura)[:token]
+  config.email = Rails.application.config_for(:superfaktura)[:email] # registration email
+  config.token = Rails.application.config_for(:superfaktura)[:token] # api key
+  # for sandbox create an account with the same email at https://sandbox.superfaktura.sk/
+  # config.sandbox = !Rails.env.production?
 end
 ```
 

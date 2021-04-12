@@ -1,9 +1,10 @@
 module Superfaktura
   class BaseApi
     SUPERFAKTURA_URL = 'https://moja.superfaktura.sk'.freeze
+    SANDBOX_SUPERFAKTURA_URL = 'https://sandbox.superfaktura.sk'.freeze
 
     def self.client
-      Faraday.new(url: SUPERFAKTURA_URL) do |builder|
+      Faraday.new(url: superfaktura_url) do |builder|
         builder.request :url_encoded
         builder.request :json
         builder.response :json
@@ -13,7 +14,7 @@ module Superfaktura
     end
 
     def self.file_client
-      Faraday.new(url: SUPERFAKTURA_URL) do |builder|
+      Faraday.new(url: superfaktura_url) do |builder|
         builder.request :url_encoded
         builder.request :json
 
@@ -39,6 +40,10 @@ module Superfaktura
 
     def self.get(path, payload = nil)
       request(path, 'GET', payload)
+    end
+
+    def self.superfaktura_url
+      Superfaktura.config.sandbox ? SANDBOX_SUPERFAKTURA_URL : SUPERFAKTURA_URL
     end
 
     def self.file(uri)
