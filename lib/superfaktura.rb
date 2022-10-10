@@ -1,6 +1,5 @@
 require 'json'
 require 'faraday'
-require 'faraday_middleware'
 
 require 'superfaktura/version'
 require 'superfaktura/configuration'

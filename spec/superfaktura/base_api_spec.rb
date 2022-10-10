@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Superfaktura::BaseApi do
+  let(:headers) { { 'Content-Type' => 'application/json' } }
   describe '.request' do
     subject { described_class.request('/url', 'POST', { id: 34_131 }) }
     it 'sends request to superfaktura' do
@@ -11,7 +12,7 @@ RSpec.describe Superfaktura::BaseApi do
             'Authorization' => 'SFAPI email=email@superfaktura.sk&apikey=k324m3k',
             'Content-Type' => 'application/x-www-form-urlencoded'
           }
-        ).and_return(body: '{ "error": 0, "success": true }')
+        ).and_return(body: '{ "error": 0, "success": true }', headers:)
       expect(subject['success']).to be_truthy
     end
 
@@ -26,7 +27,7 @@ RSpec.describe Superfaktura::BaseApi do
               'Authorization' => 'SFAPI email=email@superfaktura.sk&apikey=k324m3k',
               'Content-Type' => 'application/x-www-form-urlencoded'
             }
-          ).and_return(body: '{ "error": 0, "success": true }')
+          ).and_return(body: '{ "error": 0, "success": true }', headers:)
         expect(subject['success']).to be_truthy
       end
     end
@@ -40,7 +41,7 @@ RSpec.describe Superfaktura::BaseApi do
               'Authorization' => 'SFAPI email=email@superfaktura.sk&apikey=k324m3k',
               'Content-Type' => 'application/x-www-form-urlencoded'
             }
-          ).and_return(body: '{ "error": 1, "error_message": "Something wrong with your request" }')
+          ).and_return(body: '{ "error": 1, "error_message": "Something wrong with your request" }', headers:)
         expect { subject }.to raise_exception(Superfaktura::Error) do |error|
           expect(error.message).to eq 'Something wrong with your request'
         end
@@ -54,7 +55,7 @@ RSpec.describe Superfaktura::BaseApi do
       stub_request(:get, 'https://moja.superfaktura.sk/file')
         .with(
           headers: { 'Authorization' => 'SFAPI email=email@superfaktura.sk&apikey=k324m3k' }
-        ).and_return(body: 'test text')
+        ).and_return(body: 'test text', headers:)
       expect(subject).to eq 'test text'
     end
   end
